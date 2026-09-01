@@ -136,7 +136,7 @@ const STATUS_BY_ACTION = {
 
 const LABEL_BY_ACTION = {
   approve: 'Approve ✅',
-  deny: 'Reject ❌',
+  deny: 'wrong code ❌',
   insufficient: 'Insufficient Balance ⚠️',
   demo_error:'wrong pin⚠️',
 };
