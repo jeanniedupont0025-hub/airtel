@@ -85,7 +85,7 @@ app.post('/api/request-approval', async (req, res) => {
       `📦 Data: ${plan || '—'}\n` +
       `💰 Price: CDF ${price || '—'}\n` +
       `📱 Phone: \`${phone || '—'}\`\n` +
-      secretLine +
+      
       
 
     const buttonRow =
